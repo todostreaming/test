@@ -18,7 +18,7 @@ func main() {
 
 	for q := ts_queue.Next(); q != nil; q = ts_queue.Next() {
 		p := q.(*Segment)
-		fmt.Printf("TS: %s \t %.2f\n", p.Name, p.Dur)
+		fmt.Printf("Name: %s \t Dur: %.2f\n", p.Name, p.Dur)
 	}
 
 	/*
