@@ -1,28 +1,16 @@
 package main
 
 import (
-	"net/http"
+	"github.com/todostreaming/fifo"
 	"fmt"
-	"io/ioutil"
 )
 
 func main(){
-	m3u8 := "http:///streamrus/stream.m3u8"
-//	m3u8 := "http:///radiovida/mobile/playlist.m3u8"
-	resp, err := http.Get(m3u8)
-	if err != nil {
-		fmt.Println("Cannot connect")
-		return
-	}
-	if resp.StatusCode != 200 {
-		fmt.Println("No M3u8")
-		return
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		fmt.Println("Could not read")
-		return
-	}
-	fmt.Println(string(body))
+	cola := fifo.NewQueue()
+	fmt.Println("1.-",cola.Len())
+	cola.Add(10)
+	fmt.Println("2.-",cola.Len())
+	cola = fifo.NewQueue()
+	fmt.Println("3.-",cola.Len())
 }
+
